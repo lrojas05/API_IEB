@@ -1,4 +1,10 @@
+/* 
+    Nombre: routes
+    Descripción: métodos de consulta y seteo
+    Autor: Lany Rojas
+    Empresa: Invertir en bolsa
 
+ */
 
 const express = require ('express');
 const router = express.Router();
@@ -150,6 +156,7 @@ const mysqlConnection = require ('../database');
   // Consultar para obtener todos los datos de producto por id de categoria
   router.get('/productbycategory/:id_category', (req, res) => {
     const { id_category } = req.params; 
+    
     mysqlConnection.query('SELECT * FROM Product WHERE id_category = ?', [id_category], (err, rows, fields) => {
       if (!err) {
         res.json(rows[0]);
